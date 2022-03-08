@@ -7,12 +7,11 @@ using System.Threading.Tasks;
 
 namespace Entities.Concrete
 {
-    public class About : EntityBase, IEntity
+    public class AboutPost : EntityBase, IEntity
     {
         public string FirstTitle { get; set; }
-        public string FirstDescription { get; set; }
-        public string FirstImage { get; set; }
         public string SecondTitle { get; set; }
-        public string SecondDescription { get; set; }
+        public string Description { get; set; }
+        public string Image { get; set; }
     }
 }
