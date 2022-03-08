@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 
 namespace Entities.Concrete
 {
-    public class About : EntityBase, IEntity
+    public class SubAbout : EntityBase, IEntity
     {
-        public string Details { get; set; }
-        public string Image { get; set; }
+        public string Title { get; set; }
+        public string Description { get; set; }
     }
 }

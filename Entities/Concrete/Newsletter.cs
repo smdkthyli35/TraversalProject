@@ -7,9 +7,8 @@ using System.Threading.Tasks;
 
 namespace Entities.Concrete
 {
-    public class About : EntityBase, IEntity
+    public class Newsletter : EntityBase, IEntity
     {
-        public string Details { get; set; }
-        public string Image { get; set; }
+        public string Mail { get; set; }
     }
 }

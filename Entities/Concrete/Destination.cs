@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Entities.Concrete
 {
-    public class Destination : BaseEntity, IEntity
+    public class Destination : EntityBase, IEntity
     {
         public string City { get; set; }
         public string DayNight { get; set; }
