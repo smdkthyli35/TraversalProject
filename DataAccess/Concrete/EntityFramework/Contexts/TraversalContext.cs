@@ -15,6 +15,11 @@ namespace DataAccess.Concrete.EntityFramework.Contexts
 
         }
 
+        public TraversalContext()
+        {
+
+        }
+
         public DbSet<About> Abouts { get; set; }
         public DbSet<AboutPost> AboutPosts { get; set; }
         public DbSet<Contact> Contacts { get; set; }
