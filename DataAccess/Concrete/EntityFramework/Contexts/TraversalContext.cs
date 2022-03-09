@@ -1,4 +1,5 @@
-﻿using Entities.Concrete;
+﻿using DataAccess.Concrete.EntityFramework.Mappings;
+using Entities.Concrete;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -18,6 +19,21 @@ namespace DataAccess.Concrete.EntityFramework.Contexts
         public TraversalContext()
         {
 
+        }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
+            modelBuilder.ApplyConfiguration(new AboutMap());
+            modelBuilder.ApplyConfiguration(new AboutPostMap());
+            modelBuilder.ApplyConfiguration(new ContactMap());
+            modelBuilder.ApplyConfiguration(new DestinationMap());
+            modelBuilder.ApplyConfiguration(new FeatureMap());
+            modelBuilder.ApplyConfiguration(new GuideMap());
+            modelBuilder.ApplyConfiguration(new NewsletterMap());
+            modelBuilder.ApplyConfiguration(new OtherFeatureMap());
+            modelBuilder.ApplyConfiguration(new SubAboutMap());
+            modelBuilder.ApplyConfiguration(new TestimonialMap());
         }
 
         public DbSet<About> Abouts { get; set; }
