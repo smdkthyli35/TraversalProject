@@ -1,3 +1,4 @@
+using Business.AutoMapper.Profiles;
 using Business.Extensions;
 using DataAccess.Concrete.EntityFramework.Contexts;
 using Microsoft.AspNetCore.Builder;
@@ -31,7 +32,20 @@ namespace WebUI
             services.AddDbContext<TraversalContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"), b => b.MigrationsAssembly("DataAccess")));
             services.AddScoped<DbContext>(provider => provider.GetService<TraversalContext>());
 
-            services.LoadMyServices();
+            services.LoadMyServices(connectionString: Configuration.GetConnectionString("DefaultConnection"));
+
+            services.AddAutoMapper(
+                typeof(AboutPostProfile),
+                typeof(AboutProfile),
+                typeof(ContactProfile),
+                typeof(DestinationProfile),
+                typeof(FeatureProfile),
+                typeof(GuideProfile),
+                typeof(NewsletterProfile),
+                typeof(OtherFeatureProfile),
+                typeof(SubAboutProfile),
+                typeof(TestimonialProfile)
+                );
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

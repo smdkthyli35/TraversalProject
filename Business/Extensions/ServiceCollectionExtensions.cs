@@ -4,6 +4,7 @@ using DataAccess.Abstract;
 using DataAccess.Concrete;
 using DataAccess.Concrete.EntityFramework.Contexts;
 using DataAccess.Concrete.EntityFramework.Repositories;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
@@ -15,8 +16,11 @@ namespace Business.Extensions
 {
     public static class ServiceCollectionExtensions
     {
-        public static IServiceCollection LoadMyServices(this IServiceCollection services)
+        public static IServiceCollection LoadMyServices(this IServiceCollection services, string connectionString)
         {
+            services.AddDbContext<TraversalContext>(options => options.UseSqlServer(connectionString));
+            services.AddScoped<DbContext>(provider => provider.GetService<TraversalContext>());
+
             services.AddScoped<IUnitOfWork, UnitOfWork>();
 
             services.AddScoped<IAboutPostService, AboutPostManager>();
