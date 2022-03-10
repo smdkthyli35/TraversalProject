@@ -29,9 +29,6 @@ namespace WebUI
         {
             services.AddControllersWithViews();
 
-            services.AddDbContext<TraversalContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"), b => b.MigrationsAssembly("DataAccess")));
-            services.AddScoped<DbContext>(provider => provider.GetService<TraversalContext>());
-
             services.LoadMyServices(connectionString: Configuration.GetConnectionString("DefaultConnection"));
 
             services.AddAutoMapper(

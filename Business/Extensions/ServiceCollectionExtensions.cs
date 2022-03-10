@@ -18,7 +18,7 @@ namespace Business.Extensions
     {
         public static IServiceCollection LoadMyServices(this IServiceCollection services, string connectionString)
         {
-            services.AddDbContext<TraversalContext>(options => options.UseSqlServer(connectionString));
+            services.AddDbContext<TraversalContext>(options => options.UseSqlServer(connectionString, b => b.MigrationsAssembly("DataAccess")));
             services.AddScoped<DbContext>(provider => provider.GetService<TraversalContext>());
 
             services.AddScoped<IUnitOfWork, UnitOfWork>();
