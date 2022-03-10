@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Business.Abstract
 {
-    public interface OtherFeatureService
+    public interface IOtherFeatureService
     {
         Task<IDataResult<OtherFeatureDto>> GetAsync(int otherFeatureId);
         Task<IDataResult<OtherFeatureListDto>> GetAllAsync();
