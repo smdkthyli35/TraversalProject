@@ -1,9 +1,12 @@
 ﻿using Business.Abstract;
 using Business.Concrete;
+using Business.ValidationRules.FluentValidation;
 using DataAccess.Abstract;
 using DataAccess.Concrete;
 using DataAccess.Concrete.EntityFramework.Contexts;
 using DataAccess.Concrete.EntityFramework.Repositories;
+using Entities.Concrete;
+using FluentValidation;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using System;
@@ -52,6 +55,17 @@ namespace Business.Extensions
 
             services.AddScoped<ITestimonialService, TestimonialManager>();
             services.AddScoped<ITestimonialDal, EfTestimonialDal>();
+
+            services.AddSingleton<IValidator<AboutPost>, AboutPostValidator>();
+            services.AddSingleton<IValidator<About>, AboutValidator>();
+            services.AddSingleton<IValidator<Contact>, ContactValidator>();
+            services.AddSingleton<IValidator<Destination>, DestinationValidator>();
+            services.AddSingleton<IValidator<Feature>, FeatureValidator>();
+            services.AddSingleton<IValidator<Guide>, GuideValidator>();
+            services.AddSingleton<IValidator<Newsletter>, NewsletterValidator>();
+            services.AddSingleton<IValidator<OtherFeature>, OtherFeatureValidator>();
+            services.AddSingleton<IValidator<SubAbout>, SubAboutValidator>();
+            services.AddSingleton<IValidator<Testimonial>, TestimonialValidator>();
 
             return services;
         }
